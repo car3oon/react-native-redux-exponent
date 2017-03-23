@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
-import { ListView, View, Text } from 'react-native'
+import { ListView, StyleSheet, View } from 'react-native'
+import TaskRow from './TaskRow'
 
 export default class TaskList extends Component {
   constructor (props, context) {
@@ -16,17 +17,21 @@ export default class TaskList extends Component {
 
   _renderRow = (todo) => {
     return (
-      <Text>{todo.task}</Text>
+      <TaskRow
+        todo={todo}
+      />
     )
   }
 
   render () {
     return (
-      <ListView
-        dataSource={this.state.dataSource}
-        key={this.props.todos}
-        renderRow={this._renderRow}
-      />
+      <View style={styles.container}>
+        <ListView
+          dataSource={this.state.dataSource}
+          key={this.props.todos}
+          renderRow={this._renderRow}
+        />
+      </View>
     )
   }
 }
@@ -34,3 +39,12 @@ export default class TaskList extends Component {
 TaskList.propTypes = {
   todos: PropTypes.arrayOf(PropTypes.object).isRequired
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#f7f7f7',
+    flex: 1,
+    justifyContent: 'flex-start',
+    paddingTop: 30
+  }
+})

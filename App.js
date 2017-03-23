@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import TaskList from './TaskList'
 
 export default class App extends Component {
@@ -20,7 +20,6 @@ export default class App extends Component {
   render () {
     return (
       <View style={styles.container}>
-        <Text style={styles.bold}>TODO List</Text>
         <TaskList
           todos={this.state.todos}
         />
@@ -31,13 +30,7 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    marginTop: 30
-  },
-  bold: {
-    fontWeight: 'bold',
-    color: '#ff0000'
+    flex: 1
   }
 })
