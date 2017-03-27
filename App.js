@@ -24,6 +24,14 @@ export default class App extends Component {
     })
   }
 
+  _onDone = (todo) => {
+    console.log('Done: ', todo.task)
+    const filteredTodos = this.state.todos.filter((filterTodo) => {
+      return filterTodo !== todo
+    })
+    this.setState({ todos: filteredTodos })
+  }
+
   _renderScene = (route, nav) => {
     switch (route.name) {
       case 'taskform':
@@ -38,6 +46,7 @@ export default class App extends Component {
         <View style={styles.container}>
           <TaskList
             onAddStarted={this._onAddStarted}
+            onDone={this._onDone}
             todos={this.state.todos}
           />
         </View>
